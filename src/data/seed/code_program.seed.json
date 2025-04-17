@@ -1,0 +1,74 @@
+[
+    {
+      "ciclo": "PRIMERA INFANCIA",
+      "query": [
+        { "range": "7 días a 1 mes y 29 días",      "type_query": "Consulta por Medicina",   "code": "PYP8902011" },
+        { "range": "2 meses a 3 meses y 29 días",   "type_query": "Consulta por Enfermería", "code": "PYP8902051" },
+        { "range": "4 meses a 5 meses y 29 días",   "type_query": "Consulta por Medicina",   "code": "PYP8902011" },
+        { "range": "6 meses a 8 meses y 29 días",   "type_query": "Consulta por Enfermería", "code": "PYP8902051" },
+        { "range": "9 meses a 11 meses y 29 días",  "type_query": "Consulta por Enfermería", "code": "PYP8902051" },
+        { "range": "12 meses a 17 meses y 29 días", "type_query": "Consulta por Medicina",   "code": "PYP8902011" },
+        { "range": "18 meses a 23 meses y 29 días", "type_query": "Consulta por Enfermería", "code": "PYP8902051" },
+        { "range": "24 meses a 29 meses y 29 días", "type_query": "Consulta por Medicina",   "code": "PYP8902011" },
+        { "range": "30 meses a 35 meses y 29 días", "type_query": "Consulta por Enfermería", "code": "PYP8902051" },
+        { "range": "3 años, 11 meses y 29 días",    "type_query": "Consulta por Medicina",   "code": "PYP8902011" },
+        { "range": "4 años, 11 meses y 29 días",    "type_query": "Consulta por Enfermería", "code": "PYP8902051" },
+        { "range": "5 años, 11 meses y 29 días",    "type_query": "Consulta por Medicina",   "code": "PYP8902011" }
+      ]
+    },
+    {
+      "ciclo": "INFANCIA",
+      "query": [
+        { "range": "6 años, 11 meses y 29 días",  "type_query": "Consulta por Medicina",   "code": "PYP8902012" },
+        { "range": "7 años, 11 meses y 29 días",  "type_query": "Consulta por Enfermería", "code": "PYP8902052" },
+        { "range": "8 años, 11 meses y 29 días",  "type_query": "Consulta por Medicina",   "code": "PYP8902012" },
+        { "range": "9 años, 11 meses y 29 días",  "type_query": "Consulta por Enfermería", "code": "PYP8902052" },
+        { "range": "10 años, 11 meses y 29 días", "type_query": "Consulta por Medicina",   "code": "PYP8902012" },
+        { "range": "11 años, 11 meses y 29 días", "type_query": "Consulta por Enfermería", "code": "PYP8902052" }
+      ]
+    },
+    {
+      "ciclo": "ADOLESCENCIA",
+      "query": [
+        { "range": "12 años, 11 meses y 29 días", "type_query": "Consulta por Medicina",   "code": "PYP8902013" },
+        { "range": "13 años, 11 meses y 29 días", "type_query": "Consulta por Enfermería", "code": "PYP8902053" },
+        { "range": "14 años, 11 meses y 29 días", "type_query": "Consulta por Medicina",   "code": "PYP8902013" },
+        { "range": "15 años, 11 meses y 29 días", "type_query": "Consulta por Enfermería", "code": "PYP8902053" },
+        { "range": "16 años, 11 meses y 29 días", "type_query": "Consulta por Medicina",   "code": "PYP8902013" },
+        { "range": "17 años, 11 meses y 29 días", "type_query": "Consulta por Enfermería", "code": "PYP8902053" }
+      ]
+    },
+    {
+      "ciclo": "JUVENTUD",
+      "query": [
+        { "range": "18 años a 23 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902014" },
+        { "range": "24 años a 28 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902014" }
+      ]
+    },
+    {
+      "ciclo": "ADULTEZ",
+      "query": [
+        { "range": "29 años a 34 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902015" },
+        { "range": "35 años a 39 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902015" },
+        { "range": "40 años a 44 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902015" },
+        { "range": "45 años a 49 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902015" },
+        { "range": "50 años a 52 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902015" },
+        { "range": "53 años a 55 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902015" },
+        { "range": "56 años a 59 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902015" }
+      ]
+    },
+    {
+        "ciclo": "VEJEZ",
+        "query": [
+            { "range": "60 años a 62 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902016" },
+            { "range": "63 años a 65 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902016" },
+            { "range": "66 años a 68 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902016" },
+            { "range": "69 años a 71 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902016" },
+            { "range": "72 años a 74 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902016" },
+            { "range": "75 años a 77 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902016" },
+            { "range": "78 años a 79 años, 11 meses y 29 días", "type_query": "Consulta por Medicina", "code": "PYP8902016" },
+            { "range": "81 años y mas, 11 meses y 29 días",     "type_query": "Consulta por Medicina", "code": "PYP8902016" }
+        ]
+    }
+  ]
+  
