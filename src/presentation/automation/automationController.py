@@ -11,8 +11,8 @@ AutomationRouter = APIRouter()
 async def get(paid: str, date: str):
     
     service = AutomationService()
-    service.test()
-    # service.principal(date=date, paid=paid)
+    # service.test()
+    service.principal(date=date, paid=paid)
     # return await service.login_procedure()
 
 

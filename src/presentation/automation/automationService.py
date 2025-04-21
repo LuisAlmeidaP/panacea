@@ -11,6 +11,7 @@ import numpy as np
 import json
 
 public = PROJECT_ROOT / "public"
+script = PROJECT_ROOT / "script"
 
 
 class AutomationService:
@@ -172,6 +173,7 @@ class AutomationService:
             pyautogui.write("ADULTEZ", interval=0.01)
             pyautogui.press('enter')
 
+            
 
     def press_pyp( self ):
         pyp_img = str(public / 'PYP.png')
@@ -183,15 +185,10 @@ class AutomationService:
         press_pyp = pyautogui.locateOnScreen( pyp_img, confidence=0.6 )
         if press_pyp:
             pyautogui.click(press_pyp)
-            
-        
-        for _ in range(10):
-            pyautogui.press("pagedown")
-            time.sleep(0.2)
 
 
     def time_duration_schedule( self ):
-        time_img = str(public / 'prioritaria.png')
+        time_img = str(public / '')
         time.sleep(2)
 
         if not os.path.isfile(time_img):
@@ -231,91 +228,21 @@ class AutomationService:
                 #     pyautogui.click(button_available)
                 
 
+    def executeAHK_script( self ):
+        ahk_script_path = str(script / 'press_DHP.ahk')
+        press_dhp = str(script / 'press_DHP.ahk')
 
-    # ! pendiente
-    def move_to_date_hour_professional( self ) :
+        # Ruta a AutoHotkey.exe (ajústala si está en otro lugar)
+        ahk_exe_path = r"C:\Program Files\AutoHotkey\v1.1.37.02\AutoHotkeyU64.exe"
+        try:
+            subprocess.run([ahk_exe_path, ahk_script_path], check=True)
+            subprocess.run([ahk_exe_path, press_dhp], check=True)
+            print("Script AHK ejecutado con éxito.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error al ejecutar el script AHK: {e}")
+        except FileNotFoundError:
+            print(f"No se encontró AutoHotkey en: {ahk_exe_path}")
 
-        time_input_img = str(public / 'date_hour_professional.png')
-        time.sleep(2)
-
-        if not os.path.isfile(time_input_img):
-            print(f"❌ Imagen no encontrada: {time_input_img}")
-            return   
-        
-        input_img = pyautogui.locateOnScreen(time_input_img, confidence=0.7)
-        if input_img:
-            pyautogui.moveTo(input_img)
-
-        button_max = str( public / 'button_max.png' )
-        if not os.path.isfile(button_max):
-            print(f"❌ Imagen no encontrada: {button_max}")
-            return
-        
-        button_max_img = pyautogui.locateOnScreen(button_max, confidence=0.7)
-        if button_max_img:
-            pyautogui.click(button_max_img)
-
-
-    def get_table( self, path_imagen: str ) :
-        imagen = cv2.imread(path_imagen)
-
-        gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-
-        _, binaria = cv2.threshold(gris, 180, 255, cv2.THRESH_BINARY_INV)
-
-        kernel_h = cv2.getStructuringElement(cv2.MORPH_RECT, (40, 1))
-        kernel_v = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 20))
-
-        horizontal = cv2.erode(binaria, kernel_h)
-        horizontal = cv2.dilate(horizontal, kernel_h)
-
-        vertical = cv2.erode(binaria, kernel_v)
-        vertical = cv2.dilate(vertical, kernel_v)
-
-        tabla = cv2.add(horizontal, vertical)
-
-        contornos, _ = cv2.findContours(tabla, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-        celdas = []
-        for cnt in contornos:
-            x, y, w, h = cv2.boundingRect(cnt)
-            if w > 50 and h > 20:
-                celdas.append((x, y, w, h))
-
-        celdas_ordenadas = sorted(celdas, key=lambda b: (b[1] // 10, b[0]))
-
-        filas = []
-        fila_actual = []
-        ultimo_y = -1
-
-        for celda in celdas_ordenadas:
-            x, y, w, h = celda
-            if abs(y - ultimo_y) > 15:
-                if fila_actual:
-                    filas.append(fila_actual)
-                fila_actual = []
-            fila_actual.append(celda)
-            ultimo_y = y
-        if fila_actual:
-            filas.append(fila_actual)
-
-        tabla_extraida = []
-        for fila in filas:
-            fila_texto = []
-            for x, y, w, h in fila:
-                roi = imagen[y:y+h, x:x+w]
-                texto = pytesseract.image_to_string(roi, config='--psm 7').strip()
-                fila_texto.append(texto)
-            tabla_extraida.append(fila_texto)
-
-        return tabla_extraida
-
-
-
-    def test( self ):
-        ulr = 'image.png'
-        resultado = self.get_table(ulr)
-        print(json.dumps(resultado, indent=2, ensure_ascii=False))
 
 
     def principal( self, paid: str, date: str ): 
@@ -332,7 +259,8 @@ class AutomationService:
         self.press_pyp()
         self.press_pyp()
         self.time_duration_schedule()
-        # self.move_to_date_hour_professional()
+        time.sleep(8)
+        self.executeAHK_script()
 
    
 
