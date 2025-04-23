@@ -176,63 +176,52 @@ class AutomationService:
             
 
     def press_pyp( self ):
-        pyp_img = str(public / 'PYP.png')
+        ahk_script_path = str(script / 'press_DHP.ahk')
 
-        if not os.path.isfile(pyp_img):
-            print(f"❌ Imagen no encontrada: {pyp_img}")
-            return
+        ahk_exe_path = r"C:\Program Files\AutoHotkey\v1.1.37.02\AutoHotkeyU64.exe"
+        try:
+            subprocess.run([ahk_exe_path, ahk_script_path], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error al ejecutar el script AHK: {e}")
+        except FileNotFoundError:
+            print(f"No se encontró AutoHotkey en: {ahk_exe_path}")
+
+
+    # def time_duration_schedule( self ):
+
+        ## REFACTOR
+        # time_img = str(public / 'prioritaria.png')
+        # time.sleep(2)
+
+        # if not os.path.isfile(time_img):
+        #     print(f"❌ Imagen no encontrada: {time_img}")
+        #     return          
         
-        press_pyp = pyautogui.locateOnScreen( pyp_img, confidence=0.6 )
-        if press_pyp:
-            pyautogui.click(press_pyp)
+        # time_img_one = pyautogui.locateOnScreen(time_img, confidence=0.7)
+        # if time_img_one:
+        #     open_pr = pyautogui.center(time_img_one)
+        #     print(open_pr)
+        #     pyautogui.click(x=open_pr.x - 100, y=open_pr.y)
+        #     time.sleep(2)
+        #     pyautogui.write("Cita 30 minutos", interval=0.01)
+        #     pyautogui.press('enter')
 
-
-    def time_duration_schedule( self ):
-        time_img = str(public / '')
-        time.sleep(2)
-
-        if not os.path.isfile(time_img):
-            print(f"❌ Imagen no encontrada: {time_img}")
-            return       
-        
-        time_img_one = pyautogui.locateOnScreen(time_img, confidence=0.7)
-        if time_img_one:
-            open_pr = pyautogui.center(time_img_one)
-            print(open_pr)
-            pyautogui.click(x=open_pr.x - 100, y=open_pr.y)
-            time.sleep(2)
-            pyautogui.write("Cita 30 minutos", interval=0.01)
-            pyautogui.press('enter')
-
-            time.sleep(2)
-            calendar_img = str(public / 'calendar.png')
-            if not os.path.isfile(calendar_img):
-                print(f"❌ Imagen no encontrada: {calendar_img}")
-                return
+        #     time.sleep(2)
+        #     calendar_img = str(public / 'calendar.png')
+        #     if not os.path.isfile(calendar_img):
+        #         print(f"❌ Imagen no encontrada: {calendar_img}")
+        #         return
             
-            calendar = pyautogui.locateOnScreen(calendar_img, confidence=0.6)
-            if calendar:
-                pyautogui.click(calendar)
-                pyautogui.write("18/04/2025", interval=0.01)
-                pyautogui.press('enter')
-
-
-                # button_availa_img = str(public / 'button_disponibilidad.png')
-
-                # if not os.path.isfile(button_availa_img):
-                #     print(f"❌ Imagen no encontrada: {button_availa_img}")
-                #     return
-                
-                # button_available = pyautogui.locateOnScreen(button_availa_img, confidence=0.7)
-                # if button_available:
-                #     pyautogui.click(button_available)
-                
+        #     calendar = pyautogui.locateOnScreen(calendar_img, confidence=0.6)
+        #     if calendar:
+        #         pyautogui.click(calendar)
+        #         pyautogui.write("18/04/2025", interval=0.01)
+        #         pyautogui.press('enter')
 
     def executeAHK_script( self ):
         ahk_script_path = str(script / 'press_DHP.ahk')
         press_dhp = str(script / 'press_DHP.ahk')
 
-        # Ruta a AutoHotkey.exe (ajústala si está en otro lugar)
         ahk_exe_path = r"C:\Program Files\AutoHotkey\v1.1.37.02\AutoHotkeyU64.exe"
         try:
             subprocess.run([ahk_exe_path, ahk_script_path], check=True)
@@ -257,10 +246,10 @@ class AutomationService:
         self.search_code()
         self.programs_code()
         self.press_pyp()
-        self.press_pyp()
-        self.time_duration_schedule()
-        time.sleep(8)
-        self.executeAHK_script()
+
+        # self.time_duration_schedule()
+        # time.sleep(10)
+        # self.executeAHK_script()
 
    
 
